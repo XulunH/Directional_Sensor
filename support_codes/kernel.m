@@ -1,13 +1,13 @@
 diary('output_log.txt'); 
-L=51;
+L=11;
 d_values=[0.1,0.5,1,5,10,20,50];
-d1=10;
+d1=11;
 Uxs0=-1.15;
 Uys0=0;
 Uxs1=1.15;
 Uys1=0;
 NA=0.25; 
-filters=arrayfun(@(d) h(d,L,Uxs0,Uys0,Uxs1,Uys1,NA),d_values,'UniformOutput',false);
+filters1=arrayfun(@(d) h(d,L,Uxs0,Uys0,Uxs1,Uys1,NA),d_values,'UniformOutput',false);
 
 
 
@@ -16,7 +16,7 @@ filters=arrayfun(@(d) h(d,L,Uxs0,Uys0,Uxs1,Uys1,NA),d_values,'UniformOutput',fal
 
 obj_name='image_0.tif';
 object=double(imread(obj_name));
-object= imresize(object, [L L], 'cubic');
+object= imresize(object, [28 28], 'cubic');
 object(object<0) = 0;
 object(object>255) = 255;
 object = object/255;
@@ -33,7 +33,7 @@ x = linspace(-1, 1, size(R_U, 2));
 y = linspace(-1, 1, size(R_U, 1));
 dx = linspace(-25, 25, size(R_delta, 2));
 dy = linspace(-25, 25, size(R_delta, 1));
-figure();
+figure(3000);
 subplot(4,3,1);
 imagesc(x,y,R_U); 
 colormap('gray'); 
